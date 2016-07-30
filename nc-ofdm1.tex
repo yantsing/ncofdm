@@ -36,9 +36,11 @@
 %\no{1}
 %\SpecialSection{\LaTeXe\ Class File for the IEICE Transactions}
 %\SpecialIssue{}
-\title[How to Use the Class File]
-      {How to Use the Class File for the IEICE Transactions}
-\titlenote{This paper was presented at ...}
+\title[Iterative Reduction of OBP and PAPR
+Ratio Based on POCS]
+      {Iterative Reduction of Out-of-Band Power and Peak-to-Average Power
+Ratio for Non-Contiguous OFDM Systems Based on POCS}
+%\titlenote{This paper was presented at ...}
 \authorlist{%
  \authorentry{Yanqing LIU}{m}{labelA}[labelC]\MembershipNumber{1111111}
  \authorentry{Liang DONG}{n}{labelB}\MembershipNumber{}
@@ -63,8 +65,8 @@
 %\EICaddress{\texttt{[address]}}
 %}
 \paffiliate[labelC]{Presently, the author is with the Faculty  of the Department of Communication Engineering, Jiangxi University of Finance and Economics.}
-\received{2015}{10}{8}
-\revised{2015}{10}{31}
+%\received{2015}{10}{8}
+%\revised{2015}{10}{31}
 
 \begin{document}
 %\linenumbers
@@ -92,7 +94,8 @@ Ni~\emph{et~al}.~proposed a signal cancellation method for joint PAPR reduction 
 In this paper, we propose algorithms of joint reduction of the OBP and the PAPR for NC-OFDM that are based on alternating projections onto convex sets (POCS).  Several OFDM subcarriers including all the primary user subcarriers, are selected to accommodate the adjusting weights to reduce the OBP and the PAPR.  The adjusting weight vector is refined by iteratively projecting the frequency-domain OFDM symbol onto two convex sets.  These two convex sets are respectively defined by the OBP and the PAPR constraints.  The projection onto the set regulated by the OBP requirement is decomposed so that an iterative method can be applied and no convex optimization tools are needed.  The projection onto the set regulated by the PAPR condition has no analytical solution and convex optimization tools are used. Algorithm convergence is guaranteed by the property of the POCS. Based on the priorities of the OBP requirement and the PAPR requirement, two algorithms are proposed.  Algorithm \ref{alg:POCS} converges to a signal vector that satisfies the OBP requirement and is the closest to the set regulated by the PAPR requirement. Algorithm \ref{alg:POCS2} converges to a signal vector that satisfies the PAPR requirement and is the closest to the set regulated by the OBP requirement.   
 
 
-Compared with the method in \cite{4411634}, our algorithms do not need a trade-off parameter to control the relative priority of the OBP and the PAPR requirements.   Compared with the method in \cite{ni2015joint}, we reserve some tones to control the OBP and the PAPR.  The method in \cite{ni2015joint} does not need to reserve tones.  However, by extending the constellation points in specific directions, it increases the total transmit power.
+
+Compared with the method in \cite{4411634}, our algorithms do not need a trade-off parameter to control the relative priority of the OBP and the PAPR requirements.  The method in \cite{4411634} is based on convex optimization tools and has high complexity.  In this work, we analyze the computational complexity of our methods and provide the algorithms with low complexity.  Compared with the method in \cite{ni2015joint}, we reserve some tones to control the OBP and the PAPR.  The method in \cite{ni2015joint} does not need to reserve tones.  However, by extending the constellation points in specific directions, it increases the total transmit power.  With preliminary results reported in our conference paper \cite{6831614}, this paper has substantially extended work in the following aspects. First, the primary user subcarriers are selected to carry optimizing weights, besides the reserved tones, to improve the performance. Second, we study a practical NC-OFDM system with the cyclic prefix and the interpolation filter. The PAPR is calculated through oversampling.  Third, the performances of the algorithms are compared with each other and with other methods such as the  constellation extension method.  Fourth, we analyze the algorithm complexity and emphasize on the low-complexity solutions.
 
 \section{System Model and Problem Formulation} \label{sec:model}
 \subsection{Models of OBP and PAPR}
@@ -315,7 +318,7 @@ The solution of operation $\pi_{\mathcal{B}}(\mathbf{X})$ can be obtained by sol
 &(\mathbf{I}-\mathbf{I}_{\mathbf{w}})\mathbf{X}' = \mathbf{d}.
 \end{array} \label{eq:projector_B}
 \end{eqnarray}
-Problem \eqref{eq:projector_B} cannot be decomposed into a simpler form, and convex optimization tools such as the CVX \cite{cvx} need to be used to solve it.
+Problem \eqref{eq:projector_B} cannot be decomposed into a simpler form, and convex optimization tools need to be used to solve it.
 
 
 
@@ -374,6 +377,7 @@ For example, if $\mathbf{w} = [w_1,0,0,w_2]$, then
 
 
 The Karush-–Kuhn-–Tucker (KKT) conditions \cite{ConvexOpt_Boyd} of Problem \eqref{eq:proj_A} are given by
+\mathindent=0mm
 \begin{eqnarray}
 &&-2(\check{\mathbf{w}}-\check{\mathbf{w}}^*) + \lambda(2\mathbf{T}_{\mathbf{w}}^H\mathbf{S}^H(\mathbf{S}\mathbf{T}_{\mathbf{w}}\check{\mathbf{w}}^* + \mathbf{S}\mathbf{d})) = \mathbf{0} \label{eq:KKT_1}\\
 &&\|\mathbf{S}\mathbf{T}_{\mathbf{w}}\check{\mathbf{w}}^* + \mathbf{S}\mathbf{d}\|_2^2 \leq P_{\mathrm{OBP}}\\
@@ -382,6 +386,7 @@ The Karush-–Kuhn-–Tucker (KKT) conditions \cite{ConvexOpt_Boyd} of Problem \
 \end{eqnarray}
 where $\check{\mathbf{w}}^*$ is the optimal solution and $\lambda$ is the dual variable with respect to the OBP constraint. Given $\lambda$, it follows \eqref{eq:KKT_1} that
 \begin{eqnarray}
+\mathindent=7mm
 \check{\mathbf{w}}^* &=& (\mathbf{I}+\lambda\mathbf{T}_{\mathbf{w}}^H\mathbf{S}^H\mathbf{S}\mathbf{T}_{\mathbf{w}})^{-1}(\check{\mathbf{w}} -\lambda \mathbf{T}_{\mathbf{w}}^H\mathbf{S}^H\mathbf{S}\mathbf{d}).
  \label{eq:projection_obp_opt}
 \end{eqnarray}
@@ -478,9 +483,9 @@ Therefore, the computational complexity of the projection onto Set $\mathcal{B}$
 An NC-OFDM system is simulated with an OFDM symbol of 64 subcarriers.  There are three non-contiguous frequency blocks that occupy the subcarriers indexed 0 to 15, 24 to 39, and 48 to 63.   The cognitive-radio secondary users transmit QPSK signals over these subcarriers.  The other OFDM subcarriers are used for the incumbent primary users of the spectrum.  In particular, the frequency bands over subcarriers indexed 16 to 23 and 40 to 47 are used by the primary users. The interference to these bands needs to be reduced.  To measure the OBP in these two frequency bands, a total of 512 frequency samples $\{g_{m}\}$ are taken such that each band has 256 evenly spaced frequency samples.
 In order to combat the OBP and the PAPR, the subcarriers of the secondary users indexed 0, 5, 10, 15, 24, 29, 34, 39, 48, 53, 58, 63 and the subcarriers of the primary users are selected to carry adjusting weights.  In this simulation setting, the overhead is 25\% of the NC-OFDM subcarriers.  On the one hand, this is the cost of the secondary users if they use the spectrum.  On the other hand, the 64-subcarrier OFDM symbol is simulated for clarity.  In a practical system, more subcarriers can be used to lower the overhead percentage. The length of the cyclic prefix $N_{cp} = 16$. When calculating the PAPR, we set oversampling factor $J = 4$. The interpolation filter $g_I(t)$ is the ideal low-pass filter.
 
-The joint reduction of the OBP and the PAPR is achieved using the method of POCS.  In Algorithm~\ref{alg:POCS}, the projection onto Set $\mathcal{A}$ regulated by the OBP requirement is calculated by Algorithm~\ref{alg:proj_A}. The projection onto Set $\mathcal{B}$ regulated by the PAPR requirement is calculated with convex optimization tools.   Fig.~\ref{fig:pocs_no_interection} shows the OBP and the PAPR over the iterations of the algorithm when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  5$ dB. The limits are set so that $\mathcal{A}$ and $\mathcal{B}$ have no intersection. The PAPR and the OBP are calculated after Step 1 and 2 of Algorithm~\ref{alg:POCS}.   Because $\mathcal{A}$ and $\mathcal{B}$ have no intersection, the OBP and the PAPR values oscillate at each projection.  If Algorithm~\ref{alg:POCS} terminates at a vector point on $\mathcal{A}$, the solution has an OBP within $-4$ dB. 
+The joint reduction of the OBP and the PAPR is achieved using the method of POCS.  In Algorithm~\ref{alg:POCS}, the projection onto Set $\mathcal{A}$ regulated by the OBP requirement is calculated by Algorithm~\ref{alg:proj_A}. The projection onto Set $\mathcal{B}$ regulated by the PAPR requirement is calculated with convex optimization tools.   Figure~\ref{fig:pocs_no_interection} shows the OBP and the PAPR over the iterations of the algorithm when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  5$ dB. The limits are set so that $\mathcal{A}$ and $\mathcal{B}$ have no intersection. The PAPR and the OBP are calculated after Step 1 and 2 of Algorithm~\ref{alg:POCS}.   Because $\mathcal{A}$ and $\mathcal{B}$ have no intersection, the OBP and the PAPR values oscillate at each projection.  If Algorithm~\ref{alg:POCS} terminates at a vector point on $\mathcal{A}$, the solution has an OBP within $-4$ dB. 
 
-For comparison, Fig.~\ref{fig:pocs_interection} shows the results of Algorithm~\ref{alg:POCS} when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  8$ dB for one NC-OFDM frame. Fig.~\ref{fig:pocs_nointersection_papr} shows the results of Algorithm \ref{alg:POCS2}. For this NC-OFDM symbol, $\mathcal{A}$ and $\mathcal{B}$ have intersection.  As it is expected, after a few iterations, Algorithm~\ref{alg:POCS} and Algorithm~\ref{alg:POCS2} converge to the vector points in the intersection.  
+For comparison, Figure~\ref{fig:pocs_interection} shows the results of Algorithm~\ref{alg:POCS} when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  8$ dB for one NC-OFDM frame. Figure~\ref{fig:pocs_nointersection_papr} shows the results of Algorithm \ref{alg:POCS2}. For this NC-OFDM symbol, $\mathcal{A}$ and $\mathcal{B}$ have intersection.  As it is expected, after a few iterations, Algorithm~\ref{alg:POCS} and Algorithm~\ref{alg:POCS2} converge to the vector points in the intersection.  
 
 
 The performances of the proposed algorithms are compared with the performance of the constellation extension (CE) method for joint PAPR reduction and sidelobe suppression in NC-OFDM systems. In Fig.~\ref{fig:comparison_3algorithms} and Fig.~\ref{fig:comparison_3algorithms_obp}, $\mathrm{CCDF}(\mathrm{PAPR}_{0}) = \mathrm{Pr}\{\mathrm{PAPR} > \mathrm{PAPR}_{0}\}$, and $\mathrm{CCDF}( \mathrm{OBP}_{0}) = \mathrm{Pr}\{\mathrm{OBP} > \mathrm{OBP}_{0}\}$. It should be noted that the CE method used in our simulation minimizes the OBP with the constraint on the PAPR instead of minimizing the PAPR as in~\cite{ni2015joint}. The parameter in the CE method is set such that $\mu = 0.333$ , which means that the transmit power can be increased to 1.333 times of the original power, which can be regarded as reserving $25\%$ transmit power by the CE method. In the simulations, we adjust the PAPR reduction performance of the CE method such that it is comparable with the proposed algorithms. In order to avoid empty set constrained
@@ -499,10 +504,36 @@ NC-OFDM can be used for cognitive radio systems. But the drawbacks of the high O
 \appendix
 %\appendix*
  ... ... ...
-\profile{Hanako Denshi}{received the B.S. and 
-M.S. degrees in Electrical Engineering from 
-Denshi Institute of Technology in 1997 
-and 1999, respectively. ...}
+\profile{Yanqing Liu}{received the B.S. degree in applied electronics and the
+M.S. degrees in signal and information processing from Northwestern
+Polytechnical University, China, in 2000 and 2003,  and the Ph.D degree in electrical and computer engineering from Baylor University, U.S.A, in 2015.
+From 2003 to 2011, he worked as senior hardware engineer, senior
+software engineer and manger of driver software department respectively,
+in Datang Mobile Communications Equipment Company Limited
+Xi’an Branch, where he participated in the design and implementation
+of RNC (Radio network controller) of TD-SCDMA system
+and EPC (Evolved Packet Core) of TD-LTE system. His research interests include cognitive
+radio network, communication systems, wireless networks, digital signal
+processing, and cyber-physical systems.}
+
+\profile{Liang Dong}{received the B.S. degree in applied physics with minor
+in computer engineering from Shanghai Jiao Tong University, China,
+in 1996, and the M.S. and Ph.D. degrees in electrical and computer
+engineering from The University of Texas at Austin in 1998 and 2002,
+respectively. From 1996 to 2002, he was a Research Assistant with
+the Department of Electrical and Computer Engineering, University of
+Texas. From 1998 to 1999, he was an Engineer at CWiLL Telecommunications,
+Inc., Austin, TX, where he participated in the design and
+implementation of a smart antenna communication system. In 2000,
+he was a Consultant for Navini Networks, Inc., Richardson, TX. From
+2002 to 2004, he was a Research Associate with the Department of
+Electrical Engineering, University of Notre Dame. From 2004 to 2011,
+he was an Assistant Professor then promoted to a tenured Associate
+Professor of the Department of Electrical and Computer Engineering at
+Western Michigan University. He joined the faculty of Baylor University
+in August 2011 as an Associate Professor of Electrical and Computer
+Engineering. Dr. Dong’s research interests include communication systems, wireless networks, digital
+signal processing, cyber-physical systems, and microelectronics for communications.}
 \end{document}
 \end{verbatim}
 
