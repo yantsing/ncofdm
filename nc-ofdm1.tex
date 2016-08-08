@@ -64,7 +64,7 @@ Ratio for Non-Contiguous OFDM Systems Based on POCS}
 %\EICorganization{\texttt{[organization]}}
 %\EICaddress{\texttt{[address]}}
 %}
-\paffiliate[labelC]{Presently, the author is with the Faculty  of the Department of Communication Engineering, Jiangxi University of Finance and Economics.}
+\paffiliate[labelC]{Presently, the author is with the Department of Communication Engineering, Jiangxi University of Finance and Economics.}
 %\received{2015}{10}{8}
 %\revised{2015}{10}{31}
 
@@ -95,7 +95,7 @@ In this paper, we propose algorithms of joint reduction of the OBP and the PAPR 
 
 
 
-Compared with the method in \cite{4411634}, our algorithms do not need a trade-off parameter to control the relative priority of the OBP and the PAPR requirements.  The method in \cite{4411634} is based on convex optimization tools and has high complexity.  In this work, we analyze the computational complexity of our methods and provide the algorithms with low complexity.  Compared with the method in \cite{ni2015joint}, we reserve some tones to control the OBP and the PAPR.  The method in \cite{ni2015joint} does not need to reserve tones.  However, by extending the constellation points in specific directions, it increases the total transmit power.  With preliminary results reported in our conference paper \cite{6831614}, this paper has substantially extended work in the following aspects. First, the primary user subcarriers are selected to carry optimizing weights, besides the reserved tones, to improve the performance. Second, we study a practical NC-OFDM system with the cyclic prefix and the interpolation filter. The PAPR is calculated through oversampling.  Third, the performances of the algorithms are compared with each other and with other methods such as the  constellation extension method.  Fourth, we analyze the algorithm complexity and emphasize on the low-complexity solutions.
+Compared with the method in \cite{4411634}, our algorithms do not need a trade-off parameter to control the relative priority of the OBP and the PAPR requirements.  Compared with the method in \cite{ni2015joint}, we reserve some tones to control the OBP and the PAPR.  The method in \cite{ni2015joint} does not need to reserve tones.  However, by extending the constellation points in specific directions, it increases the total transmit power.  With preliminary results reported in our conference paper \cite{6831614}, this paper has substantially extended work in the following aspects. First, the primary user subcarriers are selected to carry optimizing weights, besides the reserved tones, to improve the performance. Second, we study a practical NC-OFDM system with the cyclic prefix and the interpolation filter. The PAPR is calculated through oversampling. Third, the performances of the algorithms are compared with each other and with other methods such as the  constellation extension method.  Fourth, we propose an algorithm which reduces the complexity of the projection onto the set constrained by the OBP limit.
 
 \section{System Model and Problem Formulation} \label{sec:model}
 \subsection{Models of OBP and PAPR}
@@ -439,14 +439,14 @@ Therefore, the computational complexity of the projection onto Set $\mathcal{B}$
 
 
 
-\begin{figure}[t]
+%\begin{figure}[t]
 %Got by program POCS_upsample_J_SC.M%
-\begin{center}
-\includegraphics[scale = 0.5]{pocs_8db.pdf}
-\end{center}
-\caption{POCS process of Algorithm \ref{alg:POCS} when there is intersection between Set $\mathcal{A}$ and Set $\mathcal{B}$.}
-\label{fig:pocs_interection}
-\end{figure}
+%\begin{center}
+%\includegraphics[scale = 0.5]{pocs_8db.pdf}
+%\end{center}
+%\caption{POCS process of Algorithm \ref{alg:POCS} when there is intersection between Set $\mathcal{A}$ and Set $\mathcal{B}$.}
+%\label{fig:pocs_interection}
+%\end{figure}
 
 \begin{figure}[t]
 	%Got by program POCS_upsample_J_SC.M%
@@ -485,13 +485,24 @@ In order to combat the OBP and the PAPR, the subcarriers of the secondary users 
 
 The joint reduction of the OBP and the PAPR is achieved using the method of POCS.  In Algorithm~\ref{alg:POCS}, the projection onto Set $\mathcal{A}$ regulated by the OBP requirement is calculated by Algorithm~\ref{alg:proj_A}. The projection onto Set $\mathcal{B}$ regulated by the PAPR requirement is calculated with convex optimization tools.   Figure~\ref{fig:pocs_no_interection} shows the OBP and the PAPR over the iterations of the algorithm when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  5$ dB. The limits are set so that $\mathcal{A}$ and $\mathcal{B}$ have no intersection. The PAPR and the OBP are calculated after Step 1 and 2 of Algorithm~\ref{alg:POCS}.   Because $\mathcal{A}$ and $\mathcal{B}$ have no intersection, the OBP and the PAPR values oscillate at each projection.  If Algorithm~\ref{alg:POCS} terminates at a vector point on $\mathcal{A}$, the solution has an OBP within $-4$ dB. 
 
-For comparison, Figure~\ref{fig:pocs_interection} shows the results of Algorithm~\ref{alg:POCS} when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  8$ dB for one NC-OFDM frame. Figure~\ref{fig:pocs_nointersection_papr} shows the results of Algorithm \ref{alg:POCS2}. For this NC-OFDM symbol, $\mathcal{A}$ and $\mathcal{B}$ have intersection.  As it is expected, after a few iterations, Algorithm~\ref{alg:POCS} and Algorithm~\ref{alg:POCS2} converge to the vector points in the intersection.  
+%For comparison, Figure~\ref{fig:pocs_interection} shows the results of Algorithm~\ref{alg:POCS} when $P_{\mathrm{OBP}} =  -4$ dB and $\Gamma_{\mathrm{PAPR}} =  8$ dB for one NC-OFDM frame. Figure~\ref{fig:pocs_nointersection_papr} shows the results of Algorithm \ref{alg:POCS2}. For this NC-OFDM symbol, $\mathcal{A}$ and $\mathcal{B}$ have intersection.  As it is expected, after a few iterations, Algorithm~\ref{alg:POCS} and Algorithm~\ref{alg:POCS2} converge to the vector points in the intersection.  
 
 
 The performances of the proposed algorithms are compared with the performance of the constellation extension (CE) method for joint PAPR reduction and sidelobe suppression in NC-OFDM systems. In Fig.~\ref{fig:comparison_3algorithms} and Fig.~\ref{fig:comparison_3algorithms_obp}, $\mathrm{CCDF}(\mathrm{PAPR}_{0}) = \mathrm{Pr}\{\mathrm{PAPR} > \mathrm{PAPR}_{0}\}$, and $\mathrm{CCDF}( \mathrm{OBP}_{0}) = \mathrm{Pr}\{\mathrm{OBP} > \mathrm{OBP}_{0}\}$. It should be noted that the CE method used in our simulation minimizes the OBP with the constraint on the PAPR instead of minimizing the PAPR as in~\cite{ni2015joint}. The parameter in the CE method is set such that $\mu = 0.333$ , which means that the transmit power can be increased to 1.333 times of the original power, which can be regarded as reserving $25\%$ transmit power by the CE method. In the simulations, we adjust the PAPR reduction performance of the CE method such that it is comparable with the proposed algorithms. In order to avoid empty set constrained
-by the PAPR in the proposed algorithms, the PAPR limit cannot be set too small, and $\Gamma_{\mathrm{PAPR}} = 8$ dB in the simulations. Algorithm \ref{alg:POCS} cannot achieve the same PAPR reduction performance as the CE method and Algorithm \ref{alg:POCS2}, because the OBP reduction has higher priority for Algorithm \ref{alg:POCS}. When
-$\mathrm{CCDF} = 0.001$ and QPSK is employed, the PAPR of Algorithm \ref{alg:POCS} with $P_{\mathrm{OBP}} = 0$ dB and Algorithm \ref{alg:POCS2} with $P_{\mathrm{OBP}} = -4$ dB is $8.8$ dB and $8$ dB, respectively. For the CE method, the PAPR reduction performance is better because all the tones can be used to control the PAPR, while for Algorithm~\ref{alg:POCS} and Algorithm~\ref{alg:POCS2} only a part of the subcarriers accommodate adjusting weights. But with similar PAPR reduction performance, the proposed algorithms have better OBP reduction performance than the CE method. It is because, for the CE method, the constellation points can only be extended in specific directions in order to allow the receiver to decode the data correctly. In addition, we simulate the algorithms with different constellation sizes. It can be shown in Fig.~\ref{fig:comparison_3algorithms} and Fig.~\ref{fig:comparison_3algorithms_obp}, the proposed algorithms have similar PAPR and OBP reduction performance with different constellation sizes. But, since the constellation points can only be extended in smaller regions because of the larger constellation size, the OBP reduction performance of the CE method is degraded. This is consistent with the findings in~\cite{1202695} that the increase in constellation size results in low
+by the PAPR in the proposed algorithms, the PAPR limit cannot be set too small, and $\Gamma_{\mathrm{PAPR}} = 8$ dB in the simulations. The OBP limits are set as $P_{\mathrm{OBP}} = 0$ dB and  $P_{\mathrm{OBP}} = -4$ dB for Algorithm \ref{alg:POCS} and Algorithm \ref{alg:POCS2}, respectively. Algorithm \ref{alg:POCS} cannot achieve the same PAPR reduction performance as the CE method and Algorithm \ref{alg:POCS2}, because the OBP reduction has higher priority for Algorithm \ref{alg:POCS}. When
+$\mathrm{CCDF} = 0.001$ and QPSK is employed, the PAPR of Algorithm \ref{alg:POCS} and Algorithm \ref{alg:POCS2} is $8.8$ dB and $8$ dB, respectively. For the CE method, the PAPR reduction performance is better because all the tones can be used to control the PAPR, while for Algorithm~\ref{alg:POCS} and Algorithm~\ref{alg:POCS2} only a part of the subcarriers accommodate adjusting weights. But with similar PAPR reduction performance, the proposed algorithms have better OBP reduction performance than the CE method. It is because, for the CE method, the constellation points can only be extended in specific directions in order to allow the receiver to decode the data correctly. It should be noted that in Fig.~\ref{fig:comparison_3algorithms} some parts of the PAPR performance are vertical lines. This is because that for CE method and Algorithm~\ref{alg:POCS2}, the PAPR is limited within the constraints. In addition, we simulate the algorithms with different constellation sizes. It can be shown in Fig.~\ref{fig:comparison_3algorithms} and Fig.~\ref{fig:comparison_3algorithms_obp}, the proposed algorithms have similar PAPR and OBP reduction performance with different constellation sizes. But, since the constellation points can only be extended in smaller regions because of the larger constellation size, the OBP reduction performance of the CE method is degraded. This is consistent with the findings in~\cite{1202695} that the increase in constellation size results in low
 performance gain in the CE method.
+
+\begin{figure}[t]
+	%Got by program pocs1.m, pocs2.m, pocs3.m%
+	\centering
+	\includegraphics[scale = 0.5]{spectrums.pdf}
+	\caption{Power spectrum density of the NC-OFDM signals with the proposed algorithms and the CE method.}
+	\label{fig:spectrums}
+\end{figure}
+Fig.~\ref{fig:spectrums} shows the normalized power spectrum density (PSD) of the NC-OFDM
+signals with the proposed algorithms and the CE method. When calculating the PSD,  $10^4$ independent NC-OFDM symbols modulated by QPSK are randomly generated. The Welch method with Blackman window is used to calculate the PSD of the transmitted NC-OFDM signals.  It is shown that Algorithm~\ref{alg:POCS} can improve the OBP suppression in the two dedicated frequency bands by about 7 dB. The better OBP performance of Algorithm~\ref{alg:POCS} is at the cost of the PAPR performance.
+%The CE method can improve the OBP reduction in the two bands by about 3 dB. The performance of the OBP reduction of Algorithm \ref{alg:POCS2} is in between the performance of the other two methods.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -621,7 +632,7 @@ B.~Krongold and D.~Jones, ``Par reduction in {OFDM} via active constellation
 \end{thebibliography}
 
 
-\appendix
+%\appendix
 %\appendix*
 \profile[IMG_6375.pdf]{Yanqing Liu}{received the B.S. degree in applied electronics and the
 M.S. degrees in signal and information processing from Northwestern
@@ -629,29 +640,23 @@ Polytechnical University, China, in 2000 and 2003,  and the Ph.D degree in elect
 From 2003 to 2011, he worked as senior hardware engineer, senior
 software engineer and manger of driver software department respectively,
 in Datang Mobile Communications Equipment Company Limited
-Xi’an Branch, where he participated in the design and implementation
-of RNC (Radio network controller) of TD-SCDMA system
-and EPC (Evolved Packet Core) of TD-LTE system. His research interests include cognitive
+, where he participated in the design of TD-SCDMA
+and TD-LTE system. Presently, he is with the Department of Communication Engineering, Jiangxi University of Finance and Economics. His research interests include cognitive
 radio network, communication systems, wireless networks, digital signal
 processing, and cyber-physical systems.}
 
-\profile{Liang Dong}{received the B.S. degree in applied physics with minor
+\profile[227755.pdf]{Liang Dong}{received the B.S. degree in applied physics with minor
 in computer engineering from Shanghai Jiao Tong University, China,
 in 1996, and the M.S. and Ph.D. degrees in electrical and computer
 engineering from The University of Texas at Austin in 1998 and 2002,
-respectively. From 1996 to 2002, he was a Research Assistant with
-the Department of Electrical and Computer Engineering, University of
-Texas. From 1998 to 1999, he was an Engineer at CWiLL Telecommunications,
-Inc., Austin, TX, where he participated in the design and
-implementation of a smart antenna communication system. In 2000,
-he was a Consultant for Navini Networks, Inc., Richardson, TX. From
+respectively. From
 2002 to 2004, he was a Research Associate with the Department of
 Electrical Engineering, University of Notre Dame. From 2004 to 2011,
 he was an Assistant Professor then promoted to a tenured Associate
 Professor of the Department of Electrical and Computer Engineering at
 Western Michigan University. He joined the faculty of Baylor University
 in August 2011 as an Associate Professor of Electrical and Computer
-Engineering. Dr. Dong’s research interests include communication systems, wireless networks, digital
+Engineering. His research interests include communication systems, wireless networks, digital
 signal processing, cyber-physical systems, and microelectronics for communications.}
 \end{document}
 \end{verbatim}
