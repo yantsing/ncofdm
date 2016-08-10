@@ -217,7 +217,7 @@ Consequently, the NC-OFDM signal in the frequency domain is given by
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[scale=0.6]{receiver.pdf}
+\includegraphics[scale=0.5]{receiver.pdf}
 \end{center}
 \caption{Block diagram of the NC-OFDM receiver.}
 \label{fig:receiver}
@@ -419,14 +419,6 @@ interior-point method, and the computational complexity is $\mathcal{O}(N^3)$ in
 iteration. Besides, one IDFT operation is needed during each iteration, which has the complexity of $\mathcal{O}(JN \log JN)$.
 Therefore, the computational complexity of the projection onto Set $\mathcal{B}$ is $\mathcal{O}(N^3 + JN \log JN)$. The computational complexity of the projection onto Set $\mathcal{A}$ is much smaller than that of the projection onto Set $\mathcal{B}$.  In order to reduce the algorithm complexity, a simple method of time-domain clipping can be applied to limit the PAPR, but the PAPR performance will drop.
 
- 
-%\begin{figure}[t]
-%\centering
-%\includegraphics[width=8.8cm]{NCOFDM}
-%\caption{NC-OFDM subcarrier allocation.}
-%\label{fig:ncofdm}
-%\end{figure}
-
 
 \begin{figure}[t]
 %Got by program POCS_upsample_J_SC.M%
@@ -442,7 +434,7 @@ Therefore, the computational complexity of the projection onto Set $\mathcal{B}$
 %\begin{figure}[t]
 %Got by program POCS_upsample_J_SC.M%
 %\begin{center}
-%\includegraphics[scale = 0.5]{pocs_8db.pdf}
+%\includegraphics[scale = 0.4]{pocs_8db.pdf}
 %\end{center}
 %\caption{POCS process of Algorithm \ref{alg:POCS} when there is intersection between Set $\mathcal{A}$ and Set $\mathcal{B}$.}
 %\label{fig:pocs_interection}
@@ -451,7 +443,7 @@ Therefore, the computational complexity of the projection onto Set $\mathcal{B}$
 \begin{figure}[t]
 	%Got by program POCS_upsample_J_SC.M%
 	\begin{center}
-	\includegraphics[scale = 0.5]{process_process_papr.pdf}
+	\includegraphics[scale = 0.4]{process_process_papr.pdf}
       \end{center}
 	\caption{POCS process of Algorithm \ref{alg:POCS2} when there is intersection between Set $\mathcal{A}$ and Set $\mathcal{B}$.}
 	\label{fig:pocs_nointersection_papr}
@@ -460,7 +452,7 @@ Therefore, the computational complexity of the projection onto Set $\mathcal{B}$
 \begin{figure}[t]
 	%Got by program pocs1.m, pocs2.m, pocs3.m%
 	\begin{center}
-	\includegraphics[scale = 0.4]{comparison_3algorithms_new.pdf}
+	\includegraphics[scale = 0.5]{comparison_3algorithms_new.pdf}
       \end{center}
 	\caption{Complementary cumulative distribution of PAPR.}
 	\label{fig:comparison_3algorithms}
@@ -470,7 +462,7 @@ Therefore, the computational complexity of the projection onto Set $\mathcal{B}$
 \begin{figure}[t]
 %Got by program pocs1.m, pocs2.m, pocs3.m%
 \begin{center}
-\includegraphics[scale = 0.6]{comparison_3algorithms_obp_new.pdf}
+\includegraphics[scale = 0.5]{comparison_3algorithms_obp_new.pdf}
 \end{center}
 \caption{Complementary cumulative distribution of OBP.}
 \label{fig:comparison_3algorithms_obp}
